@@ -9,6 +9,7 @@
 
 #include <init.h>
 
+#include <abcd/abcd.h>
 #include <addrman.h>
 #include <amount.h>
 #include <avalanche/processor.h>
@@ -2742,6 +2743,9 @@ bool AppInitMain(Config &config, RPCServer &rpcServer,
         g_txindex = std::make_unique<TxIndex>(nTxIndexCache, false, fReindex);
         g_txindex->Start();
     }
+
+    g_abcdserver = std::make_unique<AbcdServer>();
+    g_abcdserver->Start();
 
     for (const auto &filter_type : g_enabled_filter_types) {
         InitBlockFilterIndex(filter_type, filter_index_cache, false, fReindex);

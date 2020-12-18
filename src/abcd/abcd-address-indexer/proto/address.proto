@@ -1,0 +1,28 @@
+syntax = "proto3";
+package abcdaddress;
+
+service AddressService {
+    rpc GetAddressTxids (GetAddressTxidsRequest) returns (GetAddressTxidsReply);
+    rpc GetAddressRawTxs (GetAddressRawTxsRequest) returns (GetAddressRawTxsReply);
+}
+
+message GetAddressTxidsRequest {
+    string address = 1;
+}
+
+message GetAddressTxidsReply {
+    repeated bytes txids = 1;
+}
+
+message GetAddressRawTxsRequest {
+    string address = 1;
+}
+
+message GetAddressRawTxsReply {
+    repeated RawTx txs = 1;
+}
+
+message RawTx {
+    bytes raw_tx = 1;
+    bytes blockhash = 2;
+}

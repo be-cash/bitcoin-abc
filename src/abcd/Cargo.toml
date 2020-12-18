@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "abcd-address-indexer",
+    "abcd-base",
+    "abcd-bridge",
+    "abcd",
+]

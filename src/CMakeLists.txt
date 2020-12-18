@@ -268,6 +268,8 @@ endif()
 
 
 # libraries
+include_directories(${CMAKE_BINARY_DIR}/src/abcd)
+add_subdirectory(abcd)
 add_subdirectory(crypto)
 add_subdirectory(leveldb)
 add_subdirectory(secp256k1)
@@ -518,6 +520,8 @@ endif()
 
 # Bitcoin server facilities
 add_library(server
+	abcd/abcdbridge.cpp
+	abcd/abcd.cpp
 	addrdb.cpp
 	addrman.cpp
 	avalanche/delegation.cpp
@@ -591,6 +595,7 @@ target_link_libraries(server
 	bitcoinconsensus
 	leveldb
 	memenv
+	abcd
 )
 
 link_event(server event)
